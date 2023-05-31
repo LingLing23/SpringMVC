@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	<!--  프로젝트의 웹 관련 부분을 관리하는 파일   -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
