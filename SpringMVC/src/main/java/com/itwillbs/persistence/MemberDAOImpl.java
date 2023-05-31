@@ -16,7 +16,7 @@ public class MemberDAOImpl implements MemberDAO{
 	// 3. SQL 쿼리 작성
 	// 4. pstmt 객체 생성, ??? 추가
 	// 5. SQL 실행
-	// 6. (select) 데이터처리
+	// 6. (select) 데이터처리이
 	
 	
 	@Inject
