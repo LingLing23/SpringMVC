@@ -127,6 +127,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.25</version>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -147,6 +148,7 @@
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
