@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.itwillbs.persistence.MemberDAO;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
 		locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" }
@@ -21,20 +23,40 @@ public class MybatisTest {
 	@Inject
 	private SqlSessionFactory sqlFactory;
 	
-	//@Test
+	// DAO 객체 생성 -> 객체(MemberDAOImpl) 주입
+	// MemberDAO dao = new MEmberDAOImpl(); 과 같은 의미
+	@Inject
+	private MemberDAO mdao;
+	
+	
+//	@Test
 	public void test_SqlSessionFactory() throws Exception{
 		
 		System.out.println(sqlFactory);
 		
 	}
 	
-	@Test
+	
+//	@Test
 	public void test_sqlDBConntect() throws Exception{
  		// 디비연결 + SQL 실행
 		SqlSession sqlSession 
 		           = sqlFactory.openSession();
 		
 		System.out.println(sqlSession);	
+	}
+	
+	
+	@Test
+	public void 디비시간정보조회() throws Exception{
+		// 디비연결 + SQL 실행
+		// -> DB에 접근 가능
+//				SqlSession sqlSession 
+//				           = sqlFactory.openSession();
+		// => DAO 처리
+				
+		String time = mdao.getTime();
+		System.out.println("시간 정보 : " + time);
 	}
 	
 	

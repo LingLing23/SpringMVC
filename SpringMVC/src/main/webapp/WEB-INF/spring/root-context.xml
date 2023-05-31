@@ -12,7 +12,8 @@
 	<!-- 주석문 사용 주의! (태그 사이의 주석문 생성x) -->
 	
 	
-	<!-- DataSource : 디비연결정보 객체 -->
+	
+	<!-- DataSource : DB연결정보 객체 -->
 	<bean id="dataSource"
 	      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" 
@@ -22,18 +23,39 @@
 	    <property name="username" value="root" />
 	    <property name="password" value="1234" />                    
 	</bean>
-	<!-- DataSource : 디비연결정보 객체 -->
+	<!-- DataSource : DB연결정보 객체 -->
 	
-	<!-- SqlSessionFactory : 디비연결,mybatis설정,SQL실행 -->
+	
+	
+	<!-- SqlSessionFactory : DB연결, mybatis설정, SQL실행 -->
 	<bean id="sqlSessionFactory"
 	      class="org.mybatis.spring.SqlSessionFactoryBean">
 		  <property name="dataSource" ref="dataSource" />   
 		  <property name="configLocation" 
-		            value="classpath:/mybatis-config.xml" />   
+		            value="classpath:/mybatis-config.xml" /> 
+		  <property name="mapperLocations" 
+		  			value="classpath:/mappers/**/*Mapper.xml" /> 
 	
 	</bean>
-	<!-- SqlSessionFactory : 디비연결,mybatis설정,SQL실행 -->
+	<!-- SqlSessionFactory : DB연결, mybatis설정, SQL실행 -->
 	
+	
+	
+	<!-- SqlSessionTemplate : DB연결, mybatis설정, Mapper설정(SQL실행), DB종료-->
+	<bean id="sqlSession"
+		  class="org.mybatis.spring.SqlSessionTemplate"
+		  destroy-method="clearCache"
+		  >
+		  <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	
+	</bean>
+	<!-- SqlSessionTemplate : DB연결, mybatis설정, Mapper설정(SQL실행), DB종료-->
+	
+	
+	
+	<!-- 외부 객체 등록 -->
+	<context:component-scan base-package="com.itwillbs.persistence" />
+
 	
 	
 
