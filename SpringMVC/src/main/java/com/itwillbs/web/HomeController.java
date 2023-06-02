@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
+// HttpServlet을 상속하지 않고 doGet,doPost 메서드가 없어도 해당 어노테이션으로 컨트롤러 기능을 부여함.
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
