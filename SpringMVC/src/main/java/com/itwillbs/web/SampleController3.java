@@ -85,6 +85,10 @@ public class SampleController3 {
 		// -> Model 객체를 사용하면 가능
 		// Model : 스프링에서 제공, 컨트롤러와 뷰 사이에 정보를 옮겨주는 컨테이너(박스) 개념.
 		model.addAttribute("vo", vo);
+		// -> vo로 저장했으므로 뷰페이지에서도 vo로 호출해야만 정보 볼 수 있음.
+//		model.addAttribute(vo);
+		// 전달하는 키(이름)가 없음.
+		// -> 키가 없을 경우, 전달하는 타입의 클래스명의 첫글자를 소문자로 변경해서 호출하면 됨.
 		
 		return "doC";
 	}
