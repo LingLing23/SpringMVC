@@ -1,6 +1,7 @@
 package com.itwillbs.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -32,12 +33,12 @@ public class MemberDAOImpl implements MemberDAO{
 	// -> 원래는 상수라서 final키워드만 있으면 되는데 암묵적으로 static키워드도 같이 붙임.
 	
 	
+	// 로거생성
 	// "mylog" + ctrl + space
-	// -> 단축키를 통한 로거 생성
 	private static final Logger logger = LoggerFactory.getLogger(MemberDAOImpl.class);
 
 	
-	// 시간정보 조회 메서드 오버라이딩
+	// 시간정보 조회 메서드
 	@Override
 	public String getTime() {
 		String time = sqlSession.selectOne("com.itwillbs.mapper.MemberMapper.getTime");	
@@ -50,7 +51,11 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	
-	// 회원가입 메서드 오버라이딩
+	
+	
+	
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Member ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	// 1. 회원가입
 	@Override
 	public void insertMember(MemberVO vo) {
 		// 원래라면 DB연결, sql작성, pstmt객체, sql실행 등등..해야했음
@@ -60,8 +65,10 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	
-	// 방법1 )
-	// 로그인 메서드 오버라이딩
+	
+	
+	
+	// 2-1. 로그인 (방법1)
 	@Override
 	public MemberVO loginMemeber(MemberVO vo) {
 		logger.debug("테스트 -> DAO 호출 : 로그인 동작 수행");
@@ -81,8 +88,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	
-	// 방법2 )
-	// 오버로딩된 로그인 메서드 오버라이딩
+	// 2-2. 오버로딩된 로그인 (방법2)
 	@Override
 	public MemberVO loginMemeber(String id, String pw) {
 		
@@ -112,7 +118,10 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 
-	// 회원정보 수정 메서드 오버라이딩
+	
+	
+	
+	// 3. 회원정보 수정
 	@Override
 	public Integer updateMember(MemberVO uvo) {
 		
@@ -129,7 +138,10 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 
-	// 회원정보 삭제 메서드 오버라이딩
+	
+	
+	
+	// 4. 회원정보 삭제
 	@Override
 	public Integer deleteMember(MemberVO dvo) {
 		
@@ -138,8 +150,32 @@ public class MemberDAOImpl implements MemberDAO{
 		// -> delete 구문이 성공하면 삭제된 행의 수가 1이므로 1이 리턴됨.
 		
 	}
+
+
+
+
+	
+	// 5. 회원정보 조회
+	@Override
+	public MemberVO getMember(String id) {
+		logger.debug("회원정보 조회 mapper 호출");
+		return sqlSession.selectOne(NAMESPACE + ".getMember", id);
+		// 정보를 조회할때는 selectOne 메서드 파라미터 2개 있는거 선택
+	}
+
+
+
 	
 	
+	// 6. 회원정보 목록
+	@Override
+	public List<MemberVO> getMemberList() {
+		
+		return sqlSession.selectList(NAMESPACE + ".memberList");
+	}
+	
+	
+	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ Member ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ	
 	
 	
 	
