@@ -10,7 +10,6 @@
 
 
 <h1>doC.jsp</h1>
-
 http://localhost:8088/doC?msg=hello
 <hr>
 
