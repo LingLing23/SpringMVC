@@ -10,6 +10,7 @@
 
 
 <h1>doC.jsp</h1>
+<<<<<<< HEAD
 http://localhost:8088/doC?msg=hello
 <hr>
 
@@ -22,6 +23,21 @@ EL 표현식             :  ${age } <hr>
 <!-- ModelAttribute 어노테이션 사용으로
  주소줄의 데이터가 저장되어 자동으로 뷰페이지에서 el표현식으로 데이터 사용 가능 ! -->
 흠
+=======
+
+http://localhost:8088/doC?msg=hello
+<hr>
+
+
+
+JSP 표현식(파라미터)  :  <%=request.getParameter("msg") %> <hr>
+EL 표현식(파라미터)   :  ${param.msg } <hr>
+EL 표현식             :  ${msg } <hr>
+EL 표현식             :  ${age } <hr>
+<!-- ModelAttribute 어노테이션 사용으로
+ 주소줄의 데이터가 저장되어 자동으로 뷰페이지에서 el표현식으로 데이터 사용 가능 ! -->
+ 
+>>>>>>> branch 'master' of https://github.com/LingLing23/SpringMVC.git
  
  
 @${vo }@ <br>
